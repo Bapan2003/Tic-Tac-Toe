@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,57 +7,157 @@
     android:gravity="center"
     tools:context=".MainActivity">
 
-   <GridLayout
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:columnCount="3">
-       <Button
-           android:id="@+id/btn1"
-           android:onClick="Check"/>
-       <Button
-           android:id="@+id/btn2"
-           android:layout_marginLeft="11dp"
-           android:onClick="Check"/>
-       <Button
-           android:id="@+id/btn3"
-           android:layout_marginLeft="11dp"
-           android:onClick="Check"/>/>
-       <Button
-           android:id="@+id/btn4"
-           android:onClick="Check"
-          />/ android:layout_marginLeft="11dp"/>/>
-       <Button
-           android:id="@+id/btn5"
-           android:onClick="Check"
-           android:layout_marginLeft="11dp"/>/>
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:id="@+id/dialog"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        -->
+<!--        tools:ignore="MissingConstraints"-->
+<!--        tools:layout_editor_absoluteX="0dp"-->
+<!--        tools:layout_editor_absoluteY="62dp">-->
 
-       <Button
-           android:id="@+id/btn6"
-           android:onClick="Check"
-           android:layout_marginLeft="11dp"/>/>
-       <Button
-           android:id="@+id/btn7"
-           android:onClick="Check"
-         />
-       <Button
-           android:id="@+id/btn8"
-           android:onClick="Check"
-           android:layout_marginLeft="11dp"/>
-       <Button
-           android:id="@+id/btn9"
-           android:onClick="Check"
-           android:layout_marginLeft="11dp"
-           />
 
-   </GridLayout>
+<!--        <ImageView-->
+<!--            android:id="@+id/imageView"-->
+<!--            android:layout_width="147dp"-->
+<!--            android:layout_height="131dp"-->
+<!--            android:src="@drawable/congo"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            tools:layout_editor_absoluteY="-2dp" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/txtTitle"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:padding="10dp"-->
+<!--            android:text="Congrats"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="40dp"-->
+<!--            android:textStyle="bold"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/imageView" />-->
+
+
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtTurn"
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        android:padding="7dp"
+        android:background="#FF3700B3"
+
+        android:hint="Turn: X"
+        android:textColorHint="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.176"
+        tools:ignore="MissingConstraints" />
+
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.462"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            android:id="@+id/btn1"
+
+            android:onClick="Check"
+            android:textColorHint="@color/white"
+            android:textSize="50dp" />
+
+        <Button
+            android:id="@+id/btn2"
+
+            android:layout_marginLeft="15dp"
+            android:onClick="Check"
+            android:textColorHint="@color/white"
+            android:textSize="50dp" />
+
+        <Button
+            android:id="@+id/btn3"
+            android:layout_marginLeft="15dp"
+            android:onClick="Check"
+            android:textColorHint="@color/white"
+            android:textSize="50dp" />
+
+        <Button
+            android:id="@+id/btn4"
+
+            android:onClick="Check"
+            android:textColorHint="@color/white"
+            android:textSize="50dp" />
+
+        <Button
+            android:id="@+id/btn5"
+            android:layout_marginLeft="15dp"
+            android:onClick="Check"
+            android:textColorHint="@color/white"
+            android:textSize="50dp" />
+
+        <Button
+            android:id="@+id/btn6"
+            android:layout_marginLeft="15dp"
+            android:onClick="Check"
+            android:textColorHint="@color/white"
+            android:textSize="50dp" />
+
+        <Button
+            android:id="@+id/btn7"
+
+            android:onClick="Check"
+            android:textColorHint="@color/white"
+            android:textSize="50dp" />
+
+        <Button
+            android:id="@+id/btn8"
+            android:layout_marginLeft="15dp"
+            android:onClick="Check"
+            android:textColorHint="@color/white"
+            android:textSize="50dp" />
+
+        <Button
+            android:id="@+id/btn9"
+
+            android:layout_marginLeft="15dp"
+            android:onClick="Check"
+            android:textColorHint="@color/white"
+            android:textSize="50dp" />
+
+    </GridLayout>
 
     <Button
         android:id="@+id/ReStart"
         android:layout_width="wrap_content"
-        android:layout_height="147dp"
-        android:layout_marginLeft="11dp"
-        android:hint="Restart"
-        android:textColor="@color/white" />
+        android:layout_height="wrap_content"
+
+        android:padding="10dp"
+        android:text="ReStart"
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout"
+        app:layout_constraintVertical_bias="0.521"
+        tools:ignore="MissingConstraints" />
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,16 +1,20 @@
 package com.example.myapplication;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
    Button btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,Restart;
    String b1,b2,b3,b4,b5,b6,b7,b8,b9;
+   TextView txtTurn;
    int flag=0;
    int count=0;
     @Override
@@ -43,18 +47,52 @@ public class MainActivity extends AppCompatActivity {
         btn7=findViewById(R.id.btn7);
         btn8=findViewById(R.id.btn8);
         btn9=findViewById(R.id.btn9);
+        txtTurn=findViewById(R.id.txtTurn);
 
 
+
+    }
+    @Override
+    public void onBackPressed(){
+        AlertDialog.Builder builder=new AlertDialog.Builder(MainActivity.this);
+        builder.setMessage("Are you sure want to exit ?");
+        builder.setTitle("Alert!");
+        builder.setCancelable(false);
+        builder.setPositiveButton("Yes",(DialogInterface.OnClickListener)(dialog,which)->{
+            finish();
+        });
+        builder.setNegativeButton("No",(DialogInterface.OnClickListener)(dialog,which)->{
+            dialog.cancel();
+        });
+        AlertDialog alertDialog= builder.create();
+        alertDialog.show();
     }
     public void Check(View view){
        Button btnCurr=(Button)view;
        if(btnCurr.getText().toString().equals("")) {
            count++;
            if (flag == 0) {
-               btnCurr.setText("x");
+               txtTurn.setText("Turn: O");
+               btnCurr.setText("X");
+//               new Handler().postDelayed(new Runnable() {
+//                   @Override
+//                   public void run() {
+//                       Toast.makeText(MainActivity.this, "It's 'O' turn", Toast.LENGTH_SHORT).show();
+//                   }
+//               },1);
+
                flag = 1;
            } else {
+               txtTurn.setText("Turn: X");
                btnCurr.setText("O");
+
+//               new Handler().postDelayed(new Runnable() {
+//                   @Override
+//                   public void run() {
+//                       Toast.makeText(MainActivity.this, "It's 'X' turn", Toast.LENGTH_SHORT).show();
+//                   }
+//               },1);
+
                flag = 0;
            }
            if (count >= 5) {
@@ -71,8 +109,8 @@ public class MainActivity extends AppCompatActivity {
 
                //condition
                if (b1.equals(b2) && b1.equals(b3) && !b1.equals("")) {
-                   Toast.makeText(this, "Winner is : " + b1, Toast.LENGTH_SHORT).show();
-                   sleep();
+                  win(b1);
+                   //sleep();
 //                   btn1.setText("");
 //                   btn2.setText("");
 //                   btn3.setText("");
@@ -83,33 +121,32 @@ public class MainActivity extends AppCompatActivity {
 //                   btn8.setText("");
 //                   btn9.setText("");
                } else if (b4.equals(b5) && b4.equals(b6) && !b4.equals("")) {
-                   Toast.makeText(this, "Winner is : " + b4, Toast.LENGTH_LONG).show();
-                   sleep();
+                   win(b4);
+                 //  sleep();
                } else if (b7.equals(b8) && b7.equals(b9) && !b7.equals("")) {
-                   Toast.makeText(this, "Winner is : " + b7, Toast.LENGTH_LONG).show();
-                   sleep();
+                   win(b7);
+                 //  sleep();
                } else if (b1.equals(b4) && b1.equals(b7) && !b1.equals("")) {
-                   Toast.makeText(this, "Winner is : " + b1, Toast.LENGTH_LONG).show();
-                   sleep();
+                   win(b1);
+                //   sleep();
                } else if (b2.equals(b5) && b2.equals(b8) && !b2.equals("")) {
-                   Toast.makeText(this, "Winner is : " + b2, Toast.LENGTH_LONG).show();
-                   sleep();
+                   win(b2);
+                //   sleep();
                } else if (b3.equals(b6) && b3.equals(b9) && !b3.equals("")) {
-                   Toast.makeText(this, "Winner is : " + b3, Toast.LENGTH_LONG).show();
+                   win(b3);
 
-                   sleep();
+               //    sleep();
                } else if (b1.equals(b5) && b1.equals(b9) && !b1.equals("")) {
-                   Toast.makeText(this, "Winner is : " + b1, Toast.LENGTH_LONG).show();
-                  sleep();
+                   win(b1);
+                //  sleep();
                } else if (b3.equals(b5) && b3.equals(b7) && !b3.equals("")) {
-                   Toast.makeText(this, "Winner is : " + b3, Toast.LENGTH_LONG).show();
-                   sleep();
+                   win(b3);
+                 //  sleep();
+
+               }else if(count==9){
+                   Toast.makeText(this, "Game is drawn.\nPlease ReStart the Game.", Toast.LENGTH_LONG).show();
 
                }
-//               }else if(count==9){
-//                   Toast.makeText(this, "Game is drawn.", Toast.LENGTH_SHORT).show();
-//
-//               }
            }
 
        }
@@ -120,7 +157,26 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 newGame();
             }
-        },6000);
+        },3000);
+    }
+    public void win( String s){
+        AlertDialog.Builder builder= new AlertDialog.Builder(this);
+        builder.setMessage("Winner is: "+s);
+
+        builder.setTitle("Congrats");
+        builder.setCancelable(false);
+        builder.setPositiveButton("ReStart", (DialogInterface.OnClickListener)(dialog,which)->{
+            newGame();
+        });
+        builder.setNegativeButton("Exit",(DialogInterface.OnClickListener)(dialog,which)->{
+            finish();
+        });
+
+          AlertDialog alertDialog= builder.create();
+          alertDialog.show();
+
+
+
     }
     public void newGame(){
         btn1.setText("");
